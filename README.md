@@ -1,9 +1,9 @@
 
 
-Initial setup:
+# Initial setup:
 
 
-Docker:
+## Docker:
 
 1. Create a docker network for the matrix applications.
 
@@ -13,7 +13,7 @@ sudo docker network create --driver=bridge --subnet=10.10.10.0/24 --gateway=10.1
 
 via [#1](https://github.com/AmirDez/matrix-on-premise)
 
-Generate a homeserver.yml from scratch:
+## Generate a homeserver.yml from scratch:
 
 This will create a new homeserver.yml, yourdomain.log.config, and yourdomain.signing.key in the synapse folder.
 
@@ -25,7 +25,7 @@ sudo docker run -it --rm \
     matrixdotorg/synapse:latest generate
 ```
 
-Creating the admin user:
+## Creating the admin user:
 
 1. Access docker shell
 
@@ -39,13 +39,13 @@ sudo docker compose exec -it synapse bash
 register_new_matrix_user -c /data/homeserver.yaml http://localhost:8008
 ```
 
-Deploy
+# Deploy
 
 ```
 sudo docker-compose up -d
 ```
 
-Undeploy
+# Undeploy
 
 ```
 sudo docker-compose up -d
