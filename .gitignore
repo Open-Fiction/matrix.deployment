@@ -1,0 +1,3 @@
+synapse/*
+nginx/log/*
+nginx/config/sslcerts/*

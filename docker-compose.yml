@@ -1,0 +1,113 @@
+services:
+  postgres:
+    image: postgres:14
+    restart: unless-stopped
+    volumes:
+     - ./postgresdata:/var/lib/postgresql/data
+    # These will be used in homeserver.yaml later on
+    environment:
+     - POSTGRES_DB=synapse
+     - POSTGRES_USER=synapse
+     - POSTGRES_PASSWORD=<PRIVATE STRING>
+     # ensure the database gets created correctly
+     # https://matrix-org.github.io/synapse/latest/postgres.html#set-up-database
+     - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+
+  nginx:
+    image: nginx:latest
+    restart: on-failure
+    ports:
+      - 8080:80
+      - 8448:8448
+      - 8443:443
+    networks:
+      default:
+        ipv4_address: 10.10.10.2
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/www:/home/www
+      - ./nginx/config/includes:/etc/nginx/includes
+      - ./nginx/config/sslcerts:/etc/nginx/sslcerts
+      - ./nginx/config/templates:/etc/nginx/templates
+    environment:
+      NGINX_MATRIX_SYNAPSE_NAME: synapse.openfiction.net
+      NGINX_MATRIX_CLIENT_NAME: matrix.openfiction.net
+      NGINX_CINNY_CLIENT_NAME: cinny.openfiction.net
+      NGINX_MATRIX_RTC_NAME: matrixrtc.openfiction.net
+
+  element:
+    image: vectorim/element-web:latest
+    restart: unless-stopped
+    networks:
+      default:
+        ipv4_address: 10.10.10.3
+    volumes:
+      - ./element-config.json:/app/config.json
+
+  cinny:
+    image: cinny:dev-with-element-call-giga
+    restart: unless-stopped
+    networks:
+      default:
+        ipv4_address: 10.10.10.8
+    volumes:
+      - ./cinny-config.json:/app/config.json
+
+  synapse:
+    image: matrixdotorg/synapse:latest
+    restart: unless-stopped
+    networks:
+      default:
+        ipv4_address: 10.10.10.4
+    volumes:
+     - ./synapse:/data
+
+  auth-service:
+    image: ghcr.io/element-hq/lk-jwt-service:latest
+    container_name: element-call-jwt
+    hostname: auth-server
+    environment:
+      - LIVEKIT_JWT_PORT=8080
+      - LIVEKIT_URL=https://synapse.openfiction.net/livekit/sfu
+      - LIVEKIT_KEY=devkey
+      - LIVEKIT_SECRET=<PRIVATE STRING>
+      - LIVEKIT_FULL_ACCESS_HOMESERVERS=synapse.openfiction.net
+    restart: unless-stopped
+#    ports:
+#      - 8070:8080 #Change 8070 to whichever port you want JWT to be available on locally
+    networks:
+      default:
+        ipv4_address: 10.10.10.6
+
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: element-call-livekit
+    command: --config /etc/livekit.yaml
+#    ports:
+#      - 7880:7880/tcp
+#      - 7881:7881/tcp
+#      - 50100-50200:50100-50200/udp
+    networks:
+      default:
+        ipv4_address: 10.10.10.7
+    restart: unless-stopped
+    volumes:
+      - ./livekit-config.yml:/etc/livekit.yaml:ro
+#  coturn:
+#    image: instrumentisto/coturn:latest
+#    restart: unless-stopped
+#    volumes:
+#      - ./coturn/turnserver.conf:/etc/coturn/turnserver.conf
+#    ports:
+#      - 49160-49200:49160-49200/udp
+#      - 3478:3478
+#      - 5349:5349
+#    networks:
+#      - mybridge
+
+networks:
+  default:
+    external: true
+    name: matrix_net
+#  mybridge:
+#    driver: bridge

@@ -1,0 +1,102 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "matrix.openfiction.net"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    password: <PRIVATE STRING>
+    database: synapse
+    host: postgres
+    cp_min: 5
+    cp_max: 10
+log_config: "/data/synapse.openfiction.net.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: <PRIVATE STRING>
+enable_registration: true
+enable_registration_without_verification: true
+report_stats: true
+macaroon_secret_key: <PRIVATE STRING>
+form_secret: <PRIVATE STRING>
+signing_key_path: "/data/synapse.openfiction.net.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+suppress_key_server_warning: true
+
+experimental_features:
+  msc3266_enabled: true # MSC3266: Room summary API. Used for knocking over federation.
+  msc4222_enabled: true # MSC4222: Needed for syncv2 state_after. Allows clients to correctly track room state.
+  msc4140_enabled: true # MSC4140: Delayed events are required for proper call participation signalling.
+max_event_delay_duration: 24h # The maximum allowed duration by which sent events can be delayed, as per MSC4140.
+
+# Adjust rate limiting for call-related events
+rc_message:
+  # Needs to match at least E2EE key sharing frequency plus headroom.
+  # Key sharing events are bursty.
+  per_second: 0.5
+  burst_count: 30
+
+# This needs to match at least the heart-beat frequency plus a bit of headroom
+# Currently the heart-beat is every 5 seconds which translates into a rate of 0.2s
+rc_delayed_event_mgmt:
+  per_second: 1
+  burst_count: 20
+
+# URL Previews/Embeds
+url_preview_enabled: true
+url_preview_ip_range_blacklist:
+  - '127.0.0.0/8'
+  - '10.0.0.0/8'
+  - '172.16.0.0/12'
+  - '192.168.0.0/16'
+  - '100.64.0.0/10'
+  - '192.0.0.0/24'
+  - '169.254.0.0/16'
+  - '192.88.99.0/24'
+  - '198.18.0.0/15'
+  - '192.0.2.0/24'
+  - '198.51.100.0/24'
+  - '203.0.113.0/24'
+  - '224.0.0.0/4'
+  - '::1/128'
+  - 'fe80::/10'
+  - 'fc00::/7'
+  - '2001:db8::/32'
+  - 'ff00::/8'
+  - 'fec0::/10'
+max_spider_size: 10M
+url_preview_accept_language:
+  - en
+
+# When a user leaves a room also remove the room from their list of rooms
+forget_rooms_on_leave: true
+
+# Coturn (Element Voice Calling)
+#turn_uris:
+#  - "turn:synapse.openfiction.net:3478?transport=udp"
+#  - "turn:synapse.openfiction.net:3478?transport=tcp"
+#  - "turns:synapse.openfiction.net:3478?transport=udp"
+#  - "turns:synapse.openfiction.net:3478?transport=tcp"
+#turn_shared_secret: <PRIVATE STRING>
+#turn_user_lifetime: 1h
+#turn_allow_guests: true
+# vim:ft=yaml
