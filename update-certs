@@ -10,6 +10,6 @@ ALL_DOMAINS=$MAIN_DOMAIN,synapse.openfiction.net,cinny.openfiction.net
 
 sudo certbot certonly --webroot --agree-tos -d $ALL_DOMAINS
 
-sudo ln -fs /etc/letsencrypt/live/$MAIN_DOMAIN/privkey.pem nginx/config/sslcerts/privkey.pem
-sudo ln -fs /etc/letsencrypt/live/$MAIN_DOMAIN/fullchain.pem nginx/config/sslcerts/fullchain.pem
+sudo cp /etc/letsencrypt/live/$MAIN_DOMAIN/privkey.pem nginx/config/sslcerts/privkey.pem
+sudo cp /etc/letsencrypt/live/$MAIN_DOMAIN/fullchain.pem nginx/config/sslcerts/fullchain.pem
 sudo chown root:root nginx/config/sslcerts/*
