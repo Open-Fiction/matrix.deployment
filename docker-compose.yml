@@ -17,9 +17,9 @@ services:
     image: nginx:latest
     restart: on-failure
     ports:
-      - 8080:80
+      - 80:80
       - 8448:8448
-      - 8443:443
+      - 443:443
     networks:
       default:
         ipv4_address: 10.10.10.2
