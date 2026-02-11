@@ -48,7 +48,7 @@ sudo docker-compose up -d
 # Undeploy
 
 ```
-sudo docker-compose up -d
+sudo docker-compose down
 ```
 
 (note: If you get "address is already available" re-run docker-compose down and up again until it works)
