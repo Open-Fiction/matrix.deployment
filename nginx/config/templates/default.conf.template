@@ -86,6 +86,7 @@ server {
     }
 
     location / {
+        # Rewrites based on cinny's own nginx config https://github.com/cinnyapp/cinny/blob/dev/docker-nginx.conf
         rewrite ^/config.json$ /config.json break;
         rewrite ^/manifest.json$ /manifest.json break;
 
