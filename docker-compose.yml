@@ -18,6 +18,8 @@ services:
     restart: on-failure
     ports:
       - 80:80
+      - 7880:7880
+      - 7881:7881
       - 8448:8448
       - 443:443
     networks:
