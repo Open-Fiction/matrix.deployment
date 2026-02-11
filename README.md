@@ -53,3 +53,9 @@ sudo docker-compose up -d
 
 (note: If you get "address is already available" re-run docker-compose down and up again until it works)
 
+# (Optionsl) DDClient
+
+```
+systemctl --user enable ddclient.service
+systemctl --user start ddclient.service
+```
