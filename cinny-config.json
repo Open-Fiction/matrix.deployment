@@ -1,13 +1,11 @@
 {
   "defaultHomeserver": 0,
   "homeserverList": [
-    "synapse.openfiction.net",
-    "converser.eu",
-    "envs.net",
-    "matrix.org",
-    "monero.social",
-    "mozilla.org",
-    "xmr.se"
+    "openfiction.net",
+    "ribbon.mom",
+    "matrix.horse",
+    "federated.nexus",
+    "mozilla.org"
   ],
   "allowCustomHomeservers": true,
 
