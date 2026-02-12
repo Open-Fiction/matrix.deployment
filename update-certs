@@ -3,7 +3,7 @@
 # Run to create or update the certificates stored in nginx/config/sslcerts
 
 MAIN_DOMAIN=matrix.openfiction.net
-ALL_DOMAINS=$MAIN_DOMAIN,synapse.openfiction.net,cinny.openfiction.net
+ALL_DOMAINS=$MAIN_DOMAIN,openfiction.net,synapse.openfiction.net,cinny.openfiction.net
 
 # Run the first time to make sure you have an account with the acl
 # sudo certbot register --agree-tos
