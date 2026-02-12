@@ -151,7 +151,28 @@ server {
 }
 
 server {
+    listen 443 ssl http2;
+    server_name ${NGINX_BASE_NAME};
+
+    location /.well-known/ {
+        default_type  application/json;
+        add_header Access-Control-Allow-Origin *;
+        add_header Access-Control-Allow-Methods 'OPTIONS, HEAD, GET';
+
+        if ($request_method = OPTIONS) {
+            add_header Access-Control-Allow-Origin $http_origin;
+            add_header Access-Control-Allow-Methods 'OPTIONS, HEAD, GET';
+            add_header Content-Type application/json;
+            add_header Content-Length 0;
+            return 204;
+        }
+    }
+
+    root /home/www;
+}
+
+server {
    listen                 80;
-   server_name            ${NGINX_MATRIX_CLIENT_NAME} ${NGINX_MATRIX_SYNAPSE_NAME} ${NGINX_CINNY_CLIENT_NAME};
+   server_name            ${NGINX_BASE_NAME} ${NGINX_MATRIX_CLIENT_NAME} ${NGINX_MATRIX_SYNAPSE_NAME} ${NGINX_CINNY_CLIENT_NAME};
    return 301 https://$host$request_uri;
 }
