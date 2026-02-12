@@ -32,7 +32,7 @@ services:
       - ./nginx/config/sslcerts:/etc/nginx/sslcerts
       - ./nginx/config/templates:/etc/nginx/templates
     environment:
-      NGINX_MATRIX_SYNAPSE_NAME: continuwuity.openfiction.net
+      NGINX_MATRIX_SYNAPSE_NAME: synapse.openfiction.net
       NGINX_MATRIX_CLIENT_NAME: matrix.openfiction.net
       NGINX_CINNY_CLIENT_NAME: cinny.openfiction.net
       NGINX_MATRIX_RTC_NAME: matrixrtc.openfiction.net
