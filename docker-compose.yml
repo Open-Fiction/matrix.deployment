@@ -69,7 +69,7 @@ services:
       #CONTINUWUITY_LOG: warn,state_res=warn
       CONTINUWUITY_ADDRESS: 0.0.0.0
       CONTINUWUITY_CONFIG: '/etc/continuwuity.toml' # Uncomment if you mapped config toml above
-      CONTINUWUITY_ADMIN_EXECUTE: '["users create_user admin"]'
+      #CONTINUWUITY_ADMIN_EXECUTE: '["users create_user admin"]'
 
   #synapse:
   #  image: matrixdotorg/synapse:latest
