@@ -1,17 +1,17 @@
 services:
-  postgres:
-    image: postgres:14
-    restart: unless-stopped
-    volumes:
-     - ./postgresdata:/var/lib/postgresql/data
-    # These will be used in homeserver.yaml later on
-    environment:
-     - POSTGRES_DB=synapse
-     - POSTGRES_USER=synapse
-     - POSTGRES_PASSWORD=<PRIVATE STRING>
-     # ensure the database gets created correctly
-     # https://matrix-org.github.io/synapse/latest/postgres.html#set-up-database
-     - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+  #postgres:
+  #  image: postgres:14
+  #  restart: unless-stopped
+  #  volumes:
+  #   - ./postgresdata:/var/lib/postgresql/data
+  #  # These will be used in homeserver.yaml later on
+  #  environment:
+  #   - POSTGRES_DB=synapse
+  #   - POSTGRES_USER=synapse
+  #   - POSTGRES_PASSWORD=<PRIVATE STRING>
+  #   # ensure the database gets created correctly
+  #   # https://matrix-org.github.io/synapse/latest/postgres.html#set-up-database
+  #   - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
 
   nginx:
     image: nginx:latest
@@ -46,14 +46,39 @@ services:
     volumes:
       - ./cinny-config.json:/app/config.json
 
-  synapse:
-    image: matrixdotorg/synapse:latest
+  continuwuity:
+    image: forgejo.ellis.link/continuwuation/continuwuity:latest-maxperf
     restart: unless-stopped
     networks:
       default:
-        ipv4_address: 10.10.10.4
+        ipv4_address: 10.10.10.3
     volumes:
-     - ./synapse:/data
+      - ./continuwuity/db:/var/lib/continuwuity
+      - ./continuwuity/continuwuity.toml:/etc/continuwuity.toml
+    environment:
+      CONTINUWUITY_SERVER_NAME: openfiction.net
+      CONTINUWUITY_DATABASE_PATH: /var/lib/continuwuity
+      CONTINUWUITY_PORT: 6167
+      CONTINUWUITY_MAX_REQUEST_SIZE: 20000000 # in bytes, ~20 MB
+      CONTINUWUITY_ALLOW_REGISTRATION: 'true'
+      CONTINUWUITY_REGISTRATION_TOKEN: <PRIVATE STRING> # A registration token is required when registration is allowed.
+      #CONTINUWUITY_YES_I_AM_VERY_VERY_SURE_I_WANT_AN_OPEN_REGISTRATION_SERVER_PRONE_TO_ABUSE: 'true'
+      CONTINUWUITY_ALLOW_FEDERATION: 'true'
+      CONTINUWUITY_ALLOW_CHECK_FOR_UPDATES: 'true'
+      CONTINUWUITY_TRUSTED_SERVERS: '["matrix.org","cutefunny.art","ribbon.mom"]'
+      #CONTINUWUITY_LOG: warn,state_res=warn
+      CONTINUWUITY_ADDRESS: 0.0.0.0
+      CONTINUWUITY_CONFIG: '/etc/continuwuity.toml' # Uncomment if you mapped config toml above
+      CONTINUWUITY_ADMIN_EXECUTE: '["users create_user admin"]'
+
+  #synapse:
+  #  image: matrixdotorg/synapse:latest
+  #  restart: unless-stopped
+  #  networks:
+  #    default:
+  #      ipv4_address: 10.10.10.4
+  #  volumes:
+  #   - ./synapse:/data
 
   auth-service:
     image: ghcr.io/element-hq/lk-jwt-service:latest
