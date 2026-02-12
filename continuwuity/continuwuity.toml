@@ -1784,7 +1784,7 @@ allow_unstable_room_versions = true
 #
 # example: "https://matrix.example.com"
 #
-client = "https://synapse.openfiction.net"
+client = "https://continuwuity.openfiction.net"
 
 # The server base domain of the URL with a specific port that the server
 # well-known file will serve. This should contain a port at the end, and
@@ -1792,7 +1792,7 @@ client = "https://synapse.openfiction.net"
 #
 # example: "matrix.example.com:443"
 #
-server = "synapse.openfiction.net:443"
+server = "continuwuity.openfiction.net:443"
 
 # URL to a support page for the server, which will be served as part of
 # the MSC1929 server support endpoint at /.well-known/matrix/support.

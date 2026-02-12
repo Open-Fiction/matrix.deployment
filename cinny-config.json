@@ -1,7 +1,8 @@
 {
   "defaultHomeserver": 0,
   "homeserverList": [
-    "synapse.openfiction.net",
+    "continuwuity.openfiction.net",
+    "ribbon.mom",
     "converser.eu",
     "envs.net",
     "matrix.org",
