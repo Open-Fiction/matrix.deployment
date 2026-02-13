@@ -4,6 +4,8 @@
     "openfiction.net",
     "ribbon.mom",
     "matrix.horse",
+    "mlp.chat",
+    "pony.cx",
     "puddy.club",
     "federated.nexus",
     "mozilla.org"
@@ -14,6 +16,7 @@
     "openAsDefault": false,
     "spaces": [
       "#server:puddy.club",
+      "#techpones:pony.cx",
       "#cinny-space:matrix.org",
       "#community:matrix.org",
       "#space:envs.net",
@@ -22,6 +25,8 @@
       "#mathematics-on:matrix.org"
     ],
     "rooms": [
+      "#plush:mlp.chat",
+      "#ponydriland:pony.cx",
       "#cinny:matrix.org",
       "#freesoftware:matrix.org",
       "#pcapdroid:matrix.org",
@@ -29,7 +34,7 @@
       "#PrivSec.dev:arcticfoxes.net",
       "#disroot:aria-net.org"
     ],
-    "servers": ["puddy.club", "envs.net", "matrix.org", "monero.social", "mozilla.org"]
+    "servers": ["puddy.club", "mlp.chat", "pony.cx", "envs.net", "matrix.org", "monero.social", "mozilla.org"]
   },
 
   "hashRouter": {
