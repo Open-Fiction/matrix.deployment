@@ -1449,7 +1449,7 @@ allow_unstable_room_versions = true
 # attack surface to your server, you are expected to be aware of the risks
 # by doing so.
 #
-#url_preview_url_contains_allowlist = []
+url_preview_url_contains_allowlist = [ "*" ]
 
 # Maximum amount of bytes allowed in a URL preview body size when
 # spidering. Defaults to 256KB in bytes.
