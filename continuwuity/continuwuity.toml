@@ -509,7 +509,7 @@ new_user_displayname_suffix = ""
 # Always calls /forget on behalf of the user if leaving a room. This is a
 # part of MSC4267 "Automatically forgetting rooms on leave"
 #
-#forget_forced_upon_leave = false
+forget_forced_upon_leave = true
 
 # Set this to true to require authentication on the normally
 # unauthenticated profile retrieval endpoints (GET)
@@ -705,7 +705,7 @@ allow_unstable_room_versions = true
 
 # Maximum number of keys to request in each trusted server batch query.
 #
-#trusted_server_batch_size = 1024
+trusted_server_batch_size = 4096
 
 # Max log level for continuwuity. Allows debug, info, warn, or error.
 #
