@@ -1454,7 +1454,7 @@ url_preview_url_contains_allowlist = [ "*" ]
 # Maximum amount of bytes allowed in a URL preview body size when
 # spidering. Defaults to 256KB in bytes.
 #
-#url_preview_max_spider_size = 256000
+url_preview_max_spider_size = 2097152
 
 # Total request timeout for URL previews (seconds). This includes
 # connection, request, and response body reading time.
