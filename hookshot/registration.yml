@@ -19,7 +19,7 @@ namespaces:
       exclusive: true
 
 sender_localpart: hookshot
-url: "http://10.10.10.3:6167" # This should match the bridge.port in your config file
+url: "http://10.10.10.9:9993" # This should match the bridge.port in your config file
 rate_limited: false
 
 # If enabling encryption
