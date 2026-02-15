@@ -1,0 +1,28 @@
+id: hookshot # This can be anything, but must be unique within your homeserver
+as_token: <PRIVATE STRING> # This again can be a random string
+hs_token: <PRIVATE STRING> # ..as can this
+namespaces:
+  rooms: []
+  users: # In the following, foobar is your homeserver's domain
+    - regex: "@_github_.*:openfiction.net"
+      exclusive: true
+    - regex: "@_gitlab_.*:openfiction.net"
+      exclusive: true
+    - regex: "@_jira_.*:openfiction.net"
+      exclusive: true
+    - regex: "@_webhooks_.*:openfiction.net" # Where _webhooks_ is set by userIdPrefix in config.yml
+      exclusive: true
+    - regex: "@feeds:openfiction.net" # Matches the localpart of all serviceBots in config.yml
+      exclusive: true
+  aliases:
+    - regex: "#github_.+:openfiction.net" # Where foobar is your homeserver's domain
+      exclusive: true
+
+sender_localpart: hookshot
+url: "http://10.10.10.3:6167" # This should match the bridge.port in your config file
+rate_limited: false
+
+# If enabling encryption
+de.sorunome.msc2409.push_ephemeral: true
+push_ephemeral: true
+org.matrix.msc3202: true

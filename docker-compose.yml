@@ -22,6 +22,7 @@ services:
       - 7881:7881
       - 8448:8448
       - 443:443
+      - 9000:9000
     networks:
       default:
         ipv4_address: 10.10.10.2
@@ -123,6 +124,16 @@ services:
 #      - 5349:5349
 #    networks:
 #      - mybridge
+
+  # https://matrix-org.github.io/matrix-hookshot/latest/setup.html
+  hookshot:
+    image: halfshot/matrix-hookshot:latest
+    container_name: matrix-hookshot
+    networks:
+      default:
+        ipv4_address: 10.10.10.9
+    volumes:
+      - ./hookshot:/data
 
 networks:
   default:

@@ -2,3 +2,4 @@ synapse/*
 nginx/log/*
 nginx/config/sslcerts/*
 continuwuity/db/*
+*.pem
