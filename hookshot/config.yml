@@ -6,7 +6,7 @@ bridge:
   url: http://10.10.10.3:6167
   mediaUrl: https://10.10.10.3
   port: 9993
-  bindAddress: 127.0.0.1
+  bindAddress: 0.0.0.0
 logging:
   # Logging settings. You can have a severity debug,info,warn,error
   level: info
