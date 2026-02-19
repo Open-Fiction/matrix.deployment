@@ -15,7 +15,7 @@ services:
 
   nginx:
     image: nginx:latest
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - 80:80
       - 7880:7880
@@ -129,6 +129,7 @@ services:
   hookshot:
     image: halfshot/matrix-hookshot:latest
     container_name: matrix-hookshot
+    restart: unless-stopped
     networks:
       default:
         ipv4_address: 10.10.10.9
