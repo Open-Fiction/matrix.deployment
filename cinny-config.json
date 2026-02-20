@@ -34,7 +34,7 @@
       "#PrivSec.dev:arcticfoxes.net",
       "#disroot:aria-net.org"
     ],
-    "servers": ["puddy.club", "mlp.chat", "pony.cx", "envs.net", "matrix.org", "monero.social", "mozilla.org"]
+    "servers": ["puddy.club", "mlp.chat", "pony.cx", "envs.net", "matrix.org", "monero.social", "mozilla.org", "matrixrooms.info"]
   },
 
   "hashRouter": {
