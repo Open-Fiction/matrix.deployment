@@ -1,3 +1,6 @@
 [submodule "cinny"]
     path = cinny
     url = https://github.com/Open-Fiction/cinny
+[submodule "www"]
+    path = nginx/www
+    url = https://github.com/Open-Fiction/github.io
