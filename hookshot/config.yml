@@ -46,7 +46,12 @@ listeners:
 
 permissions:
   # (Optional) Permissions for using the bridge. See docs/setup.md#permissions for help
-  - actor: "@admin@openfiction.net"
+  - actor: "@admin:openfiction.net"
+    services:
+      - service: "*"
+        level: admin
+  # (Optional) Permissions for using the bridge. See docs/setup.md#permissions for help
+  - actor: "@sollace:openfiction.net"
     services:
       - service: "*"
         level: admin
