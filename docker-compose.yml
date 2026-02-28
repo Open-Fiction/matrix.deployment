@@ -125,16 +125,16 @@ services:
 #    networks:
 #      - mybridge
 
-  # https://matrix-org.github.io/matrix-hookshot/latest/setup.html
-  hookshot:
-    image: halfshot/matrix-hookshot:latest
-    container_name: matrix-hookshot
-    restart: unless-stopped
-    networks:
-      default:
-        ipv4_address: 10.10.10.9
-    volumes:
-      - ./hookshot:/data
+#  # https://matrix-org.github.io/matrix-hookshot/latest/setup.html
+#  hookshot:
+#    image: halfshot/matrix-hookshot:latest
+#    container_name: matrix-hookshot
+#    restart: unless-stopped
+#    networks:
+#      default:
+#        ipv4_address: 10.10.10.9
+#    volumes:
+#      - ./hookshot:/data
 
 networks:
   default:
