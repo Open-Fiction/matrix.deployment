@@ -284,7 +284,7 @@ new_user_displayname_suffix = ""
 
 # Max request size for file uploads in bytes. Defaults to 20MB.
 #
-max_request_size = 209715200
+#max_request_size = 2097152
 
 # This item is undocumented. Please contribute documentation for it.
 #
