@@ -1123,7 +1123,7 @@ trusted_server_batch_size = 8192
 # Note that presence on continuwuity is very fast unlike Synapse's. If
 # using outgoing presence, this MUST be enabled.
 #
-#allow_local_presence = true
+allow_local_presence = true
 
 # Allow incoming federated presence updates/requests.
 #
@@ -1131,7 +1131,7 @@ trusted_server_batch_size = 8192
 # send any unless `allow_outgoing_presence` is true. Note that presence on
 # continuwuity is very fast unlike Synapse's.
 #
-#allow_incoming_presence = true
+allow_incoming_presence = true
 
 # Allow outgoing presence updates/requests.
 #
@@ -1140,7 +1140,7 @@ trusted_server_batch_size = 8192
 # on continuwuity is very fast unlike Synapse's. If using outgoing
 # presence, you MUST enable `allow_local_presence` as well.
 #
-#allow_outgoing_presence = true
+allow_outgoing_presence = true
 
 # How many seconds without presence updates before you become idle.
 # Defaults to 5 minutes.
