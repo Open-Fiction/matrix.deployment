@@ -23,6 +23,12 @@ services:
       - 8448:8448
       - 443:443
       - 9000:9000
+    extra_hosts:
+      - "ribbon.mom:151.243.109.50"
+      - "scarlet.ribbon.mom:151.243.109.50"
+      - "element.ribbon.mom:151.243.109.50"
+      - "cinny.ribbon.mom:151.243.109.50"
+
     networks:
       default:
         ipv4_address: 10.10.10.2
@@ -42,6 +48,12 @@ services:
   cinny:
     image: cinny:dev-with-element-call-giga
     restart: unless-stopped
+    extra_hosts:
+      - "ribbon.mom:151.243.109.50"
+      - "scarlet.ribbon.mom:151.243.109.50"
+      - "element.ribbon.mom:151.243.109.50"
+      - "cinny.ribbon.mom:151.243.109.50"
+
     networks:
       default:
         ipv4_address: 10.10.10.8
@@ -54,6 +66,12 @@ services:
     networks:
       default:
         ipv4_address: 10.10.10.3
+    extra_hosts:
+      - "ribbon.mom:151.243.109.50"
+      - "scarlet.ribbon.mom:151.243.109.50"
+      - "element.ribbon.mom:151.243.109.50"
+      - "cinny.ribbon.mom:151.243.109.50"
+
     volumes:
       - ./continuwuity/db:/var/lib/continuwuity
       - ./continuwuity/continuwuity.toml:/etc/continuwuity.toml
@@ -92,6 +110,12 @@ services:
       - LIVEKIT_KEY=devkey
       - LIVEKIT_SECRET=<PRIVATE STRING>
       - LIVEKIT_FULL_ACCESS_HOMESERVERS=synapse.openfiction.net
+    extra_hosts:
+      - "ribbon.mom:151.243.109.50"
+      - "scarlet.ribbon.mom:151.243.109.50"
+      - "element.ribbon.mom:151.243.109.50"
+      - "cinny.ribbon.mom:151.243.109.50"
+
     restart: unless-stopped
 #    ports:
 #      - 8070:8080 #Change 8070 to whichever port you want JWT to be available on locally
@@ -107,6 +131,12 @@ services:
 #      - 7880:7880/tcp
 #      - 7881:7881/tcp
 #      - 50100-50200:50100-50200/udp
+    extra_hosts:
+      - "ribbon.mom:151.243.109.50"
+      - "scarlet.ribbon.mom:151.243.109.50"
+      - "element.ribbon.mom:151.243.109.50"
+      - "cinny.ribbon.mom:151.243.109.50"
+
     networks:
       default:
         ipv4_address: 10.10.10.7
