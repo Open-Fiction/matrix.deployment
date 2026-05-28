@@ -1,0 +1,2 @@
+# /bin/bash
+tar -czf db_backup.tar.gz db
