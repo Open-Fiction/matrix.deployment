@@ -166,6 +166,21 @@ services:
 #    volumes:
 #      - ./hookshot:/data
 
+  ooye:
+    image: sim2kid/ooye-docker:latest
+    container_name: discord-bridge-ooye
+    restart: unless-stopped
+    networks:
+      default:
+        ipv4_address: 10.10.10.10
+    environment:
+      OOYE_DATADIR: /data
+    volumes:
+      - ./ooye/data:/data
+    ports:
+      - 6693:6693
+    command: setup
+
 networks:
   default:
     external: true
