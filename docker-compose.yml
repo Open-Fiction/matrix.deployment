@@ -179,7 +179,7 @@ services:
       - ./ooye/data:/data
     ports:
       - 6693:6693
-    command: setup
+    #command: setup
 
 networks:
   default:
