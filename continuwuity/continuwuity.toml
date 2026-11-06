@@ -209,6 +209,7 @@ new_user_displayname_suffix = ""
 # configured to do so.
 #
 #dns_cache_entries = 32768
+dns_cache_entries = 0
 
 # Minimum time-to-live in seconds for entries in the DNS cache. The
 # default may appear high to most administrators; this is by design as the
@@ -281,6 +282,7 @@ new_user_displayname_suffix = ""
 # of the A record.
 #
 #ip_lookup_strategy = 5
+ip_lookup_strategy = 1
 
 # Max request size for file uploads in bytes. Defaults to 20MB.
 #
