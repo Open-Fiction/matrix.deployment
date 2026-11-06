@@ -60,7 +60,7 @@ services:
     volumes:
       - ./continuwuity/db:/var/lib/continuwuity
       - ./continuwuity/continuwuity.toml:/etc/continuwuity.toml
-      - ./unbound/resolv.conf:/etc/resolv.conf:ro
+      - ./continuwuity/resolv.conf:/etc/resolv.conf:ro
     environment:
       CONTINUWUITY_SERVER_NAME: openfiction.net
       CONTINUWUITY_DATABASE_PATH: /var/lib/continuwuity
@@ -157,16 +157,16 @@ services:
       - 6693:6693
     # command: setup
 
-  unbound:
-    image: docker.io/madnuttah/unbound:latest
-    container_name: matrix-unbound-network-proxy
-    restart: unless-stopped
-    networks:
-      default:
-        ipv4_address: 10.10.10.20
-    volumes:
-        - ./unbound/unbound.conf:/usr/local/unbound/unbound.conf
-        - ./unbound/log/unbound.log:/var/log/unbound.log
+#  unbound:
+#    image: docker.io/madnuttah/unbound:latest
+#    container_name: matrix-unbound-network-proxy
+#    restart: unless-stopped
+#    networks:
+#      default:
+#        ipv4_address: 10.10.10.20
+#    volumes:
+#        - ./unbound/unbound.conf:/usr/local/unbound/unbound.conf
+#        - ./unbound/log/unbound.log:/var/log/unbound.log
 
 networks:
   default:
